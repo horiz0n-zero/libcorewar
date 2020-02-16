@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 10:05:14 by afeuerst          #+#    #+#             */
-/*   Updated: 2020/01/28 08:40:23 by afeuerst         ###   ########.fr       */
+/*   Updated: 2020/02/16 11:16:52 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,11 @@ struct										s_libcorewar_asm_file // source is .cor
 	struct s_libcorewar_opcode_asm			*opcodes;
 };
 
-struct										s_libcorewar_cor_file // source is a valid .cor + padding 4
+struct										s_libcorewar_cor_file
 {
 	struct s_asm_header						*header;
 	void									*instructions;
 	size_t									length;
-	size_t									padded_length; // instructions size!
 };
 
 struct										s_libcorewar_opcode_src
@@ -168,6 +167,12 @@ void							libcorewar_unset_src_file(struct s_libcorewar_src_file *const file);
 void							libcorewar_out_asm_file(const int fd, struct s_libcorewar_asm_file *const file);
 void							libcorewar_out_asm_file_hexcolors(const int fd, struct s_libcorewar_asm_file *const file);
 void							libcorewar_out_src_file(const int fd, struct s_libcorewar_src_file *const file, char **const error);
+void							libcorewar_out_cor_file(const int fd, const struct s_libcorewar_cor_file *const file,
+		const char *const label, const int flags);
+# define OUT_COR_SHOW_INS 1 << 0
+# define OUT_COR_SHOW_LABEL 1 << 1
+# define OUT_COR_SHOW_SUBINS 1 << 2
+# define OUT_COR_SHOW_SUBINS_LABEL 1 << 3
 
 // utility
 char							libcorewar_opcode_src_encoded_parameters(struct s_libcorewar_opcode_src *const op) __attribute__((pure));

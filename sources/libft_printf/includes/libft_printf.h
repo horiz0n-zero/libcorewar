@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 08:46:04 by afeuerst          #+#    #+#             */
-/*   Updated: 2019/11/23 08:54:21 by afeuerst         ###   ########.fr       */
+/*   Updated: 2020/02/14 10:13:28 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 int		ft_printf(const char *const format, ...);
 int		ft_dprintf(const int fd, const char *const format, ...);
+int		ft_sprintf(char *const dst, const char *const format, ...);
 int		ft_asprintf(char **const ret, const char *const format, ...);
 int		ft_bprintf(int (*function)(const char *const, const size_t), const char *const format, ...);
 
